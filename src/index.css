@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Clamor e Sul Design System - Luxury Hair Cosmetics */
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 3%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 16 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens - Light sections */
+    --section-light-bg: 0 0% 98%;
+    --section-light-fg: 0 0% 10%;
+    --section-light-muted: 0 0% 45%;
+
+    /* Custom tokens */
+    --orange-glow: 16 100% 50%;
+    --orange-light: 16 100% 60%;
+    --dark-surface: 0 0% 3%;
+    --dark-surface-elevated: 0 0% 8%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0% / 0.9), hsl(0 0% 0% / 0.6));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 5%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 5%), hsl(0 0% 2%));
+    --gradient-orange: linear-gradient(135deg, hsl(16 100% 50%), hsl(25 100% 55%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 8px 30px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 40px hsl(16 100% 50% / 0.4);
+
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 16 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    /* Cinza bem escuro */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    /* Cinza médio/claro */
+    border-radius: 6px;
+    border: 3px solid #1a1a1a;
+    /* Cria um "espaço" ao redor do thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #666666;
+    /* Cinza mais claro no hover */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 font-semibold tracking-wide;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  .section-dark {
+    background: var(--gradient-dark);
+  }
+
+  .section-blend-top {
+    @apply relative;
+  }
+
+  .section-blend-top::before {
+    content: "";
+    @apply absolute top-0 left-0 right-0 pointer-events-none z-0;
+    height: 12rem;
+    background: linear-gradient(180deg, hsl(0 0% 2%), transparent);
+  }
+
+  .section-light {
+    background-color: hsl(var(--section-light-bg));
+    color: hsl(var(--section-light-fg));
+  }
+
+  .section-light .text-foreground {
+    color: hsl(var(--section-light-fg));
+  }
+
+  .section-light .text-muted-foreground {
+    color: hsl(var(--section-light-muted));
+  }
+
+  .card-product {
+    @apply bg-card border-2 border-transparent;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+
+  .card-product:hover {
+    @apply border-primary;
+    box-shadow: var(--shadow-card);
+    transform: translateY(-4px);
+  }
+
+  .text-gradient {
+    background: var(--gradient-orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .divider-orange {
+    @apply h-px bg-primary/30;
+  }
+
+  .accent-line {
+    @apply w-16 h-1 bg-primary;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
